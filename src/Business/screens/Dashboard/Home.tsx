@@ -44,7 +44,7 @@ function HomeComponent() {
             </div>
             <div className="w-full flex h-5/6 flex-col justify-evenly 2xl:px-44 xl:px-40 lg:px-30 md:px-10 ">
                 <div className="shadow-2xl border-2 rounded-lg h-2/5 lg:h-2/5 flex items-center justify-evenly flex-col bg-white">
-                    <Text className="text-2xl ml-10 self-start font-semibold text-secondary">Transacciones</Text>
+                    <Text className="text-2xl ml-10 self-start font-semibold text-secondary">Historial de transacciones</Text>
                     <div className="h-4/6 w-5/6 flex p-10 items-center justify-center">
                         <LineChart data={blocksList.map(block => {
                             const time = Number(block.timestamp) * 1000;
