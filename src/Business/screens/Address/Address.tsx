@@ -31,12 +31,18 @@ function AddressScreenComponent() {
     </TransactionsRow>;
 
     return  <ScreenCommon className='flex p-10 flex-col justify-between'>
-        <div className='h-1/3 w-full'>
-            <Text className="text-3xl font-bold text-stone-700">{`Address: ${address}`}</Text>
+        <div className='h-2/6 flex flex-col'>
+            <Text className="mx-2 my-10 text-xl font-bold text-primary ">{`Address: ${address}`}</Text>
+            
         </div>
-        <div className='w-full h-2/3'>
-            <div className='shadow-2xl border-2 rounded-lg w-full h-full'>
-                <List data={transactions} rowRender={renderRow} columns={['Hash', 'Origen', 'Destino', 'Cantidad', 'Gas', 'Gas price']}></List>
+        <div className='shadow-2xl rounded-lg h-5/6 border-2'>
+            <div className='w-full h-full'>
+                <div className="h-1/6 flex items-center">
+                    <Text className="text-xl font-bold text-primary ml-10 flex">Transacciones realizadas</Text>
+                </div>
+                <div className="h-5/6">
+                    <List data={transactions} rowRender={renderRow} columns={['Hash', 'Origen', 'Destino', 'Cantidad', 'Gas', 'Gas price']}></List>
+                </div>
             </div>
         </div>
     </ScreenCommon>;

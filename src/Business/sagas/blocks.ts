@@ -28,5 +28,5 @@ function* getBlockByTimestamp(action: ReturnType<typeof getBlockTimestampRequest
 }
 
 export default all([
-    takeLatest(GET_BLOCK_TIMESTAMP_REQUEST, getBlockByTimestamp),
+    takeLatest(GET_BLOCK_TIMESTAMP_REQUEST, getBlockByTimestamp)
 ]);

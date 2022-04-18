@@ -6,4 +6,7 @@ export const getLastBlockQuery = (state: ReducersRootState) => state.blocks.quer
 export const getTransactions = (state: ReducersRootState) => state.transactions.list;
 
 export const getTransactionsBlock = (state: ReducersRootState) => state.transactions.block.transactions;
+
 export const getAddress = (state: ReducersRootState) => state.address;
+
+export const getBlock = (state: ReducersRootState) => state.blocks.block;

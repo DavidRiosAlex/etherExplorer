@@ -6,7 +6,7 @@ interface ScreenCommonProps {
 }
 
 function ScreenCommonComponent ({className = '', children}: ScreenCommonProps) {
-    return <div className={`w-screen bg-[url('https://i.imgur.com/mGsemxo.png')] bg-no-repeat h-screen scrollbar overflow-auto ${className}`}>
+    return <div className={`w-screen bg-no-repeat h-screen scrollbar overflow-auto ${className}`}>
         {children}
     </div>;
 }

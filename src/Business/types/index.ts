@@ -45,7 +45,7 @@ export type BlockEtherDetail = {
     stateRoot: string,
     timestamp: string,
     totalDifficulty: string,
-    transactions?: TransactionBlockNumber [] | number,
+    transactions: TransactionBlockNumber [] | number,
     transactionsRoot: string,
     uncles: string []
 }

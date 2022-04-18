@@ -11,7 +11,7 @@ interface ListComponentProps <T>{
 function ListComponent <T>({rowRender, data, columns}: ListComponentProps<T>) {
     return (
         <div className="flex flex-col h-full w-full">
-            <div className="w-full flex flex-row flex-wrap px-10 py-4 border-b-2">
+            <div className="w-full text flex flex-row flex-wrap px-10 py-4 border-b-2">
                 {columns.map(column => <div key={column} className="truncate  min-w-fit flex-1 text-center">{column}</div>)}
             </div>
             <div className={`flex flex-col h-full w-full scrollbar overflow-auto ${data.length ? '' : 'items-center justify-center'}`}>

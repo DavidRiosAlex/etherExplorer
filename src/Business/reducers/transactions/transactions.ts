@@ -42,7 +42,7 @@ export default function (state: TransactionssReduxStateModel = defaultValue, act
         }
         return {...state, list: {[action.payload.name]: [...action.payload.transactions], ...list} };
     } else if (GET_TRANSACTIONS_PER_BLOCK_REQUEST === action.type) {
-        return {...state, block: {...state.block, blockNumber: action.type}};
+        return {...state, block: {...state.block, blockNumber: action.payload}};
     } else if (GET_TRANSACTIONS_PER_BLOCK_SUCCESS === action.type) {
         return {...state, block: {...state.block, transactions: action.payload}};
     }

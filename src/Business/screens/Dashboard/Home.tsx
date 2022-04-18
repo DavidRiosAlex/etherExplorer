@@ -1,7 +1,6 @@
-import React, { Suspense, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import ReactLoading from 'react-loading';
 import List from '../../../Commons/Components/List';
 import Row from '../../../Commons/Components/List/Row';
 import TransactionsRow from '../../../Commons/Components/List/TransactionsRow';
@@ -39,7 +38,7 @@ function HomeComponent() {
         return () => clearInterval(idInterval);
     }, []);
     return (
-        <ScreenCommon className='bg-white flex flex-col justify-between'>
+        <ScreenCommon className="bg-white flex flex-col justify-between bg-[url('https://i.imgur.com/mGsemxo.png')]">
             <div className="h-36  w-full flex items-center">
                 <Text className="text-2xl ml-10 font-bold text-white">Ethereum Explorer</Text>
             </div>

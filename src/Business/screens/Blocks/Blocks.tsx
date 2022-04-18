@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,7 +7,7 @@ import TransactionsRow from '../../../Commons/Components/List/TransactionsRow';
 import { ScreenCommon } from '../../../Commons/Components/ScreenCommon';
 import { Text } from '../../../Commons/Components/Text';
 import { getTransactionsPerBlockRequest } from '../../actions';
-import { getTransactionsBlock } from '../../selectors';
+import { getBlock, getTransactionsBlock } from '../../selectors';
 import { TransactionBlockNumber } from '../../types';
 
 function BlocksScreenComponent() {
@@ -14,7 +15,8 @@ function BlocksScreenComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const transactions = useSelector(getTransactionsBlock);
-    
+    const block = useSelector(getBlock);
+    console.log(block);
     const goToAddress = useCallback((hash: string) => {
         navigate(`/address/${hash}`);
     }, []);
@@ -32,10 +34,36 @@ function BlocksScreenComponent() {
 
 
     return  <ScreenCommon className='flex p-10 flex-col justify-between'>
-        <div className='h-1/3'>
-            <Text className="text-xl font-bold text-white ">{`Bloque numero: ${blockNumber}`}</Text>
+        <div className='h-2/6 flex flex-col'>
+            <Text className="mx-2 my-10 text-xl font-bold text-primary ">{`Bloque numero: ${block?.number ? Number(block?.number) : '-'}`}</Text>
+            <div className="flex flex-row flex-wrap w-full h-5/6">
+                <div className="flex-1 h-full shadow-xl mx-2 rounded-lg bg-secondary">
+                    <Text className="text-lg font-bold text-white m-10 h-1/6 uppercase	">{'Fecha'}</Text>
+                    <div className="h-5/6 w-full flex items-center justify-center">
+                        <Text className="text-3xl font-bold text-white ">{`${block?.timestamp ? moment(Number(block?.timestamp) * 1000).format('DD/MM/YYYY HH:mm:ss') : '-'}`}</Text>
+                    </div>
+                </div>
+                <div className="flex-1 h-full shadow-xl mx-2 rounded-lg bg-secondary">
+                    <Text className="text-lg font-bold text-white m-10 h-1/6 uppercase	">{'Cantidad de transacciones'}</Text>
+                    <div className="h-5/6 w-full flex items-center justify-center">
+                        <Text className="text-3xl font-bold text-white ">{(Array.isArray(block?.transactions) ? block?.transactions.length : 0)?.toString()}</Text>
+                    </div>
+                </div>
+                <div className="flex-1 h-full shadow-xl mx-2 rounded-lg bg-secondary">
+                    <Text className="text-lg font-bold text-white m-10 h-1/6 uppercase	">{'Tarifa base por Gas (Gwei)'}</Text>
+                    <div className="h-5/6 w-full flex items-center justify-center">
+                        <Text className="text-3xl font-bold text-white ">{(Number(block?.baseFeePerGas) / 1_000_000_000).toString()}</Text>
+                    </div>
+                </div>
+                <div className="flex-1 h-full shadow-xl mx-2 rounded-lg bg-secondary">
+                    <Text className="text-lg font-bold text-white m-10 h-1/6 uppercase	">{'Gas limit (Gwei)'}</Text>
+                    <div className="h-5/6 w-full flex items-center justify-center">
+                        <Text className="text-3xl font-bold text-white ">{Number(block?.gasLimit).toString()}</Text>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="shadow-2xl h-2/3 border-2">
+        <div className="shadow-2xl rounded-lg h-3/6 border-2">
             <div className="h-1/6 flex items-center">
                 <Text className="text-xl font-bold text-primary ml-10 flex">Transacciones realizadas</Text>
             </div>
