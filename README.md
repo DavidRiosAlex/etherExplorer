@@ -14,3 +14,5 @@ REACT_APP_ETHERSCAN_URL=https://api.etherscan.io
 reemplaza ${apikey} por tu api key.
 
 ve a la terminal, haz ``` npm install --legacy-peer-deps para instalar ``` las dependencias y luego npm start.
+
+LA VERSIÓN DE NODE QUE UTILIZE FUE 17.4.0
