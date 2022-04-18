@@ -1,0 +1,29 @@
+how to get every new block you should make a polling for real time
+first make request to:
+https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp=1649726549&closest=before&apikey=YTCTAKKUT69TIG53VMV1VRV5VGSIGCCNVM
+
+
+then to: 
+https://api.etherscan.io/api?module=block&action=getblockreward&blockno=14568659&apikey=YTCTAKKUT69TIG53VMV1VRV5VGSIGCCNVM
+
+with the blockno from the lastest request result
+
+
+/*     const timestampUnix = Math.floor(Date.now() / 1000);
+    const {data: block} = await axiosEtherScan.get(`?module=block&action=getblocknobytime&timestamp=${timestampUnix}&closest=before`);
+    console.log(block); */
+
+    const {data: rewards} = await axiosEtherScan.get(`api?module=block&action=getblockreward&blockno=${BLOCK_NUMBER}`);
+    console.log('obtenemos todos los datos del bloque');
+    const {data: block_data} = await daxiosEtherScan.get(`api?module=proxy&action=eth_getBlockByNumber&tag=${BLOCK_NUMBER_HEX}&boolean=true`)
+
+    block_data.result.transactions.length = 4;
+    console.log('transactions number: ', block_data.result.transactions);
+
+    const address = block_data.result.transactions[1].to;
+
+    console.log(address)
+
+    const {data} = await axiosEtherScan.get(`api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc`);
+
+    console.log('transactions maded by ' + address + ': ', data.result.length);
